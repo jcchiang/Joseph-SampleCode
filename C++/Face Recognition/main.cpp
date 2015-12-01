@@ -1,6 +1,4 @@
-// PR 2011 fall sample code
-// T.A. Chen Shen-Shi 
-// d98922030@csie.ntu.edu.tw
+// PR 2011 Fall
 
 #include "faceDefine.h"
 
@@ -25,19 +23,18 @@
 using namespace cv;
 using namespace std;
 
-// I Added
 FaceEqualCorrelizer *face_ECizer;
 FILE *output;
-//
+
 FaceDetection *face_detector;
 OpenCVASMAlignment *myAlignment;
 FaceCrop *FaceCropper;
-vector<FaceInfo> CropFaceSet;   //包含Crop後要偵測的資訊
-vector<IplImage*> FaceSet;      //存放Crop後灰階影像
-vector<FP> FaceFP;              //Alignment後存放
+vector<FaceInfo> CropFaceSet;   
+vector<IplImage*> FaceSet;
+vector<FP> FaceFP;
 char tmp[100];
-char folder[100]; //待處理影像的資料夾
-char studentID[100]; //學生ID
+char folder[100];
+char studentID[100];
 char type[100];
 char folderwithout[100];
 char filename[150];
@@ -50,36 +47,7 @@ char *inputfilename;
 char id[54][20];
 char input[300], tokens[20][40];
 	
-/*
-void FaceEqualAndGamma(int in, float fGamma){
-	IplImage *src, *equal, *tmp;
-	//Equalized
-	src = cvCloneImage(FaceSet[in]);
-	equal = cvCloneImage(src);
-	cvEqualizeHist(src, equal);
-	//Gamma Correlation
-	tmp = cvCloneImage(equal);
-	unsigned char lut[256];  
-    for( int i = 0; i < 256; i++ )  
-    {  
-        lut[i] = pow((float)(i/255.0), fGamma) * 255.0;  
-    }
 
-	cv::Mat tempMat(tmp, 0);
-	const int channels = tempMat.channels();
-
-	cv::MatIterator_<uchar> it, end;  
-    for( it = tempMat.begin<uchar>(), end = tempMat.end<uchar>(); it != end; it++ )  
-		*it = lut[(*it)];
-
-	IplImage gamma= IplImage(tempMat);
-	FaceSet[in] = cvCloneImage(&gamma);
-
-	cvReleaseImage(&src);
-	cvReleaseImage(&equal);
-	cvReleaseImage(&tmp);
-}
-*/
 void LoadIDTable(){
 	char idfile[300] = "id_label.txt";
 	FILE *idload;
@@ -222,8 +190,8 @@ void main()
 					        drawimg = cvCloneImage(img);
 							GetInputFileName();
 							cout<< "dir: " << dir << endl;
- 					        faceWindow = face_detector->Detect(img);//人臉偵測
-	                        if(faceWindow.size() != 0) //若有偵測到一個以上的人臉
+ 					        faceWindow = face_detector->Detect(img);
+	                        if(faceWindow.size() != 0)
 							{
 								 for(int i=0; i<faceWindow.size(); i++)
 									 cvRectangle(drawimg,cvPoint(faceWindow[i].x, faceWindow[i].y),cvPoint(faceWindow[i].x+faceWindow[i].width, faceWindow[i].y+faceWindow[i].height),CV_RGB(255,0,0));
@@ -356,8 +324,7 @@ void main()
 									predict_label = min_confidence_idx[minimum_idx];
 								}
 
-								// 將原附檔名刪除
-                                char *node = strrchr(filename, '.');
+								char *node = strrchr(filename, '.');
 			                    if(*node != NULL) *node ='\0';
 								//sprintf(resultdir,"%s/%s_dog.tiff", savingfolder, filename);
 								cout<<savingfolder<<endl;
