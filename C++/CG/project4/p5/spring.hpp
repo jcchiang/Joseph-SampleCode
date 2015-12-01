@@ -1,3 +1,10 @@
+//
+//  spring.cpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #ifndef _462_SPRING_HPP_
 #define _462_SPRING_HPP_
 

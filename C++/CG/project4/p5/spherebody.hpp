@@ -1,3 +1,10 @@
+//
+//  spherebody.hpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #ifndef _462_PHYSICS_SPHEREBODY_HPP_
 #define _462_PHYSICS_SPHEREBODY_HPP_
 

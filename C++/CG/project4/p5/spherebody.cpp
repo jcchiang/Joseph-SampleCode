@@ -1,3 +1,10 @@
+//
+//  spherebody.cpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #include "p5/spherebody.hpp"
 #include "math/vector.hpp"
 #include "math/matrix.hpp"
@@ -29,33 +36,22 @@ SphereBody::SphereBody( Sphere* geom )
 
 Vector3 SphereBody::step_position( real_t dt, real_t motion_damping )
 {
-    // Note: This function is here as a hint for an approach to take towards
-    // programming RK4, you should add more functions to help you or change the
-    // scheme
-    // TODO return the delta in position dt in the future
-    //Vector3 upper = position + Vector3(radius, radius, radius);
-    //Vector3 lower = position - Vector3(radius, radius, radius);
-    //bound = BoundBox(lower, upper);
-    //std::cout<<bound<<std::endl;
+    // return the delta in position dt in the future
     return velocity * dt;
 }
 
 Vector3 SphereBody::step_orientation( real_t dt, real_t motion_damping )
 {
-    // Note: This function is here as a hint for an approach to take towards
-    // programming RK4, you should add more functions to help you or change the
-    // scheme
-    // TODO return the delta in orientation dt in the future
+    // return the delta in orientation dt in the future
     // vec.x = rotation along x axis
     // vec.y = rotation along y axis
     // vec.z = rotation along z axis
-
     return angular_velocity * dt;
 }
 
 void SphereBody::apply_force( const Vector3& f, const Vector3& offset )
 {
-    // TODO apply force/torque to sphere
+    // apply force/torque to sphere
     if(length(offset) < 0.0001){
         force += f;
         torque += Vector3::Zero();

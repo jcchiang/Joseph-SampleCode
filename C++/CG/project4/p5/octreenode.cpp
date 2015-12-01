@@ -42,8 +42,7 @@ bool OctreeNodes::check_leaves(Body &body, int leafnum){
     Vector3 _center = bound.center + offset;
     real_t _radius = radius * 0.5;
     BoundBox temp_bound = BoundBox(_center - Vector3(_radius, _radius, _radius), _center + Vector3(_radius, _radius, _radius));
-    //std::cout<<_radius<<std::endl;
-    //std::cout<<"BOUND " << leafnum << ": " << temp_bound<< std::endl;
+    
     if( intersect(body.bound, temp_bound))
     {
         return true;
@@ -103,7 +102,7 @@ void OctreeNodes::initialize(std::vector<Body*> &geometryList,
 
     
 void OctreeNodes::query(){
-    //std::cout<<this->center;
+    std::cout<<this->center;
 }
 
 }

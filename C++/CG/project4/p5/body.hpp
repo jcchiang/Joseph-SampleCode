@@ -6,7 +6,6 @@
 #include <exception>
 #include <iostream>
 
-//Joseph Added
 #include "math/matrix.hpp"
 
 #define PLANEBODY 0

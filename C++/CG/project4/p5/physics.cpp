@@ -1,3 +1,10 @@
+//
+//  physics.cpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #include "p5/physics.hpp"
 
 namespace _462 {
@@ -22,20 +29,8 @@ void Physics::initialize(){
     
 void Physics::step( real_t dt )
 {
-    // TODO step the world forward by dt. Need to detect collisions, apply
+    // step the world forward by dt. Need to detect collisions, apply
     // forces, and integrate positions and orientations.
-    //
-    // Note: put RK4 here, not in any of the physics bodies
-    //
-    // Must use the functions that you implemented
-    //
-    // Note, when you change the position/orientation of a physics object,
-    // change the position/orientation of the graphical object that represents
-    // it
-    
-    //std::cout<<"Gravity = " << this->gravity << std::endl;
-    
-    
     for(size_t i=0; i<num_spheres(); i++){
         //Update Spheres boundbox
         Vector3 upper = spheres[i]->position + Vector3(spheres[i]->radius, spheres[i]->radius, spheres[i]->radius);

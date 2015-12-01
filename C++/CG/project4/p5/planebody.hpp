@@ -1,3 +1,10 @@
+//
+//  planebody.hpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #ifndef _462_PHYSICS_PLANE_HPP_
 #define _462_PHYSICS_PLANE_HPP_
 

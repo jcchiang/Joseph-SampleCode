@@ -1,3 +1,10 @@
+//
+//  collisions.cpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #include "p5/collisions.hpp"
 #include "scene/model.hpp"
 #include "math/matrix.hpp"
@@ -6,7 +13,7 @@ namespace _462 {
 
 bool collides( SphereBody& body1, SphereBody& body2, real_t collision_damping )
 {
-    // TODO detect collision. If there is one, update velocity
+    // detect collision. If there is one, update velocity
     real_t dis = distance(body1.position, body2.position);
     if(dis < body1.radius + body2.radius){
         // Collision occured
@@ -32,7 +39,7 @@ bool collides( SphereBody& body1, SphereBody& body2, real_t collision_damping )
 
 bool collides( SphereBody& body1, TriangleBody& body2, real_t collision_damping )
 {
-    // TODO detect collision. If there is one, update velocity
+    // detect collision. If there is one, update velocity
     if(project_onto_triangle(body1, body2.vertices[0], body2.vertices[1], body2.vertices[2])){
         //Collision occured
         if(length(body1.velocity) < 0.001)
@@ -49,7 +56,7 @@ bool collides( SphereBody& body1, TriangleBody& body2, real_t collision_damping 
 
 bool collides( SphereBody& body1, PlaneBody& body2, real_t collision_damping )
 {
-    // TODO detect collision. If there is one, update velocity
+    // detect collision. If there is one, update velocity
     Vector3 aVector = body1.position - body2.position;
     real_t dis = dot(aVector, body2.normal);
     if(fabs(dis) < body1.radius){
@@ -63,43 +70,8 @@ bool collides( SphereBody& body1, PlaneBody& body2, real_t collision_damping )
 
 bool collides( SphereBody& body1, ModelBody& body2, real_t collision_damping )
 {
-    // TODO detect collision. If there is one, update velocity
-    
-    
+    // detect collision. If there is one, update velocity
     collides(body1, *body2.model_root, collision_damping);
-    
-    /*
-    Vector3 vertex[3];
-    for(size_t i = 0; i < body2.bodies.size(); i++){
-        vertex[0] = body2.bodies[i]->vertices[0];
-        vertex[1] = body2.bodies[i]->vertices[1];
-        vertex[2] = body2.bodies[i]->vertices[2];
-        
-        if(project_onto_triangle(body1, vertex[0], vertex[1], vertex[2])){
-            return true;
-        }
-    }
-    return false;
-    */
-    /*
-    Vector3 vertex[3];
-    
-    const MeshTriangle* triangles = body2.model->mesh->get_triangles();
-    const MeshVertex* vertices = body2.model->mesh->get_vertices();
-    for(size_t i = 0; i < body2.model->mesh->num_triangles(); i++){
-        // TODO Check each triangle
-        vertex[0] = body2.mat.transform_point(vertices[triangles[i].vertices[0]].position);
-        vertex[1] = body2.mat.transform_point(vertices[triangles[i].vertices[1]].position);
-        vertex[2] = body2.mat.transform_point(vertices[triangles[i].vertices[2]].position);
-
-        if(project_onto_triangle(body1, vertex[0], vertex[1], vertex[2])){
-            std::cout<<"Velocity after: "<<body1.velocity.y<<std::endl;
-            return true;
-        }
-    }
-    return false;
-    */
-    
 }
 
 bool check_intersect(BoundBox bbox1, BoundBox bbox2){
@@ -113,7 +85,6 @@ bool check_intersect(BoundBox bbox1, BoundBox bbox2){
 }
 
 bool collides( SphereBody& body1, OctreeNodes& body2, real_t collision_damping){
-    //std::cout<<"HELLO"<<std::endl;
     bool isBottom = true;
     for(size_t i=0; i<8; i++){
         if(body2.leafs[i] != NULL){
@@ -121,10 +92,8 @@ bool collides( SphereBody& body1, OctreeNodes& body2, real_t collision_damping){
             break;
         }
     }
-    //std::cout<<isBottom<<std::endl;
     
     if(isBottom){
-        //std::cout<<"isBottom!!"<<std::endl;
         for(size_t i=0; i<body2.bodies.size(); i++){
             switch(body2.bodies[i]->type){
                 case TRIANGLEBODY:

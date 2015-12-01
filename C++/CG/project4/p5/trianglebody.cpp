@@ -1,3 +1,11 @@
+//
+//  trianglebody.cpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+//
+
 #include "p5/trianglebody.hpp"
 #include <iostream>
 
@@ -11,7 +19,6 @@ TriangleBody::TriangleBody( Triangle* geom )
     orientation = Quaternion::Identity();
     velocity = Vector3::Zero();
     
-    //Joseph Added
     type = TRIANGLEBODY;
     real_t max_x = std::max(vertices[0].x, std::max(vertices[1].x, vertices[2].x));
     real_t max_y = std::max(vertices[0].y, std::max(vertices[1].y, vertices[2].y));
@@ -26,7 +33,6 @@ TriangleBody::TriangleBody( Triangle* geom )
     bound = BoundBox(lower, upper);
 }
 
-//Joseph Added    
 TriangleBody::TriangleBody(Vector3 a, Vector3 b, Vector3 c){
     vertices[0] = a;
     vertices[1] = b;

@@ -1,3 +1,10 @@
+//
+//  collisions.hpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #ifndef _462_COLLISIONS_HPP_
 #define _462_COLLISIONS_HPP_
 

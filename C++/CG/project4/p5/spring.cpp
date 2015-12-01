@@ -1,3 +1,10 @@
+//
+//  spring.cpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #include "math/math.hpp"
 #include "math/vector.hpp"
 #include "math/quaternion.hpp"
@@ -18,7 +25,7 @@ Spring::Spring()
 
 void Spring::step( real_t dt )
 {
-    // TODO apply forces to attached bodies
+    // TODO: apply forces to attached bodies
     
     Vector3 offset1 = body1->orientation * body1_offset;
     Vector3 offset2 = body2->orientation * body2_offset;
@@ -28,8 +35,6 @@ void Spring::step( real_t dt )
     
     Vector3 dir1 = point1 - point2;
     Vector3 dir2 = point2 - point1;
-    
-    //real_t dist = length(dir1);
     
     real_t v1 = dot(body1->velocity, normalize(dir1));
     real_t v2 = dot(body2->velocity, normalize(dir2));

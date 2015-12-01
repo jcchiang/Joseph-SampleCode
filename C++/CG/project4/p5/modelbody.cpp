@@ -1,3 +1,10 @@
+//
+//  modelbody.cpp
+//  P4
+//
+//  Created by Joseph Chiang on 4/22/15.
+//
+
 #include "p5/modelbody.hpp"
 #include <iostream>
 
@@ -7,7 +14,6 @@ ModelBody::ModelBody( Model* geom )
 {
     model = geom;
     
-    // Joseph Added
     type = MODELBODY;
     
     mat = Matrix4::Zero();
@@ -23,7 +29,6 @@ ModelBody::~ModelBody(){
     
 }
     
-//Joseph Added
 void ModelBody::initialize(){
     make_transformation_matrix(&mat, model->position, model->orientation, model->scale);
     
